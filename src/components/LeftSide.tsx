@@ -30,11 +30,11 @@ export function LeftSide(props:Props){
         props.setEtiquetas([...props.etiquetas, etiqueta]);
 
         //Limpando Form
-        setPatrimonio("");
+        /*setPatrimonio("");
         setResponsavel("");
         setUsuario("");
         setSala("");
-        setDescricao("");
+        setDescricao("");*/
     }
 
     return(
@@ -42,23 +42,23 @@ export function LeftSide(props:Props){
             <Form onSubmit={handleCreateNewEtiqueta}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Patrimônio</Form.Label>
-                    <Form.Control type="text" placeholder="Patrimônio SIADS" value={patrimonio} onChange={event =>setPatrimonio(event.target.value)}/>
+                    <Form.Control type="text" placeholder="Patrimônio SIADS" value={patrimonio} onChange={event =>setPatrimonio(event.target.value)} maxLength={10}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Responsável</Form.Label>
-                    <Form.Control type="text" placeholder="Responsável no sistema" value={responsavel} onChange={event =>setResponsavel(event.target.value)}/>
+                    <Form.Control type="text" placeholder="Responsável no sistema" value={responsavel} onChange={event =>setResponsavel(event.target.value)} maxLength={22}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Usuário</Form.Label>
-                    <Form.Control type="text" placeholder="Quem usa o bem" value={usuario} onChange={event =>setUsuario(event.target.value)}/>
+                    <Form.Control type="text" placeholder="Quem usa o bem" value={usuario} onChange={event =>setUsuario(event.target.value)} maxLength={22}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Sala</Form.Label>
-                    <Form.Control type="text" placeholder="Sala em que o bem está" value={sala} onChange={event =>setSala(event.target.value)}/>
+                    <Form.Control type="text" placeholder="Sala em que o bem está" value={sala} onChange={event =>setSala(event.target.value)} maxLength={22}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Descrição</Form.Label>
-                    <Form.Control type="text" placeholder="Breve descrição..." value={descricao} onChange={event =>setDescricao(event.target.value)}/>
+                    <Form.Control type="text" placeholder="Breve descrição..." value={descricao} onChange={event =>setDescricao(event.target.value)} maxLength={45}/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Adicionar Etiqueta
