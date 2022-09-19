@@ -1,56 +1,18 @@
 import { useState } from 'react';
 import { Row } from 'react-bootstrap';
 import Col from 'react-bootstrap/Col';
-import { EtiquetaModal } from '../Models/EtiquetaModal';
+import { EtiquetaModal } from '../Models/EtiquetaModal'; 
 import { Etiqueta } from './Etiqueta';
 
-export function RightSide(){
+type Props = {
+    etiquetas:EtiquetaModal[]
+}
 
-    const [etiquetas, setEtiquetas] = useState<EtiquetaModal[]>([
-        {
-            patrimonio:"12861555",
-            responsavel:"Onésimo Alexandre",
-            usuario:"Mguel Almeida",
-            sala:"Protocolo",
-            descricao:"Mesa Reta Bege"
-        },
-        {
-            patrimonio:"12861555",
-            responsavel:"Onésimo Alexandre",
-            usuario:"Mguel Almeida",
-            sala:"Protocolo",
-            descricao:"Mesa Reta Bege"
-        },
-        {
-            patrimonio:"12861555",
-            responsavel:"Onésimo Alexandre",
-            usuario:"Mguel Almeida",
-            sala:"Protocolo",
-            descricao:"Mesa Reta Bege"
-        },
-        {
-            patrimonio:"12861555",
-            responsavel:"Onésimo Alexandre",
-            usuario:"Mguel Almeida",
-            sala:"Protocolo",
-            descricao:"Mesa Reta Bege"
-        },
-        {
-            patrimonio:"12861555",
-            responsavel:"Onésimo Alexandre",
-            usuario:"Mguel Almeida",
-            sala:"Protocolo",
-            descricao:"Mesa Reta Bege"
-        }
-    ])
+export function RightSide(props:Props){
 
-    const etiqueta:EtiquetaModal = {
-        patrimonio:"12861555",
-        responsavel:"Onésimo Alexandre",
-        usuario:"Mguel Almeida",
-        sala:"Protocolo",
-        descricao:"Mesa Reta Bege"
-    }
+    const etiquetas:EtiquetaModal[] = props.etiquetas
+
+    
     return(
         <Col sm={8}>
             <Row>

@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import { useBarcode } from 'react-barcodes';
-import { EtiquetaModal } from '../Models/EtiquetaModal';
+import { EtiquetaModal } from '../Models/EtiquetaModal'; 
 
 type Props = {
     etiqueta:EtiquetaModal

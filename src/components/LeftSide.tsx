@@ -3,16 +3,20 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { FormEvent, useState } from 'react';
 import { Etiqueta } from './Etiqueta';
-import { EtiquetaModal } from '../Models/EtiquetaModal';
+import { EtiquetaModal } from '../Models/EtiquetaModal'; 
 
-export function LeftSide(){
+type Props = {
+    etiquetas:EtiquetaModal[]
+    setEtiquetas:Function
+}
+
+export function LeftSide(props:Props){
     const [patrimonio, setPatrimonio] = useState("");
     const [responsavel, setResponsavel] = useState("");
     const [usuario, setUsuario] = useState("");
     const [sala, setSala] = useState("");
     const [descricao, setDescricao] = useState("");
 
-    
 
     function handleCreateNewEtiqueta(event:FormEvent){
         event.preventDefault();
@@ -23,7 +27,7 @@ export function LeftSide(){
         etiqueta.sala = sala;
         etiqueta.descricao = descricao
 
-        console.dir(etiqueta);
+        props.setEtiquetas([...props.etiquetas, etiqueta]);
 
         //Limpando Form
         setPatrimonio("");

@@ -5,7 +5,7 @@ export function Header(){
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand>Criador de Etiquetas SIADS</Navbar.Brand>
-            </Container>
+            </Container> 
         </Navbar>
     );
 }
