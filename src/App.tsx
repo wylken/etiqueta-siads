@@ -9,15 +9,15 @@ import { EtiquetaModal } from "./Models/EtiquetaModal";
 
 
 export function App() { 
-
+  const maxEtiquetas = 20;
   const [etiquetas, setEtiquetas] = useState<EtiquetaModal[]>([]);
   return (
     <>
       <Header/>
       <Container>
         <Row>
-          <LeftSide etiquetas = {etiquetas} setEtiquetas = {setEtiquetas}/>
-          <RightSide etiquetas={etiquetas} setEtiquetas = {setEtiquetas}/>
+          <LeftSide etiquetas = {etiquetas} setEtiquetas = {setEtiquetas} maxEtiquetas={maxEtiquetas}/>
+          <RightSide etiquetas={etiquetas} setEtiquetas = {setEtiquetas} maxEtiquetas={maxEtiquetas}/>
         </Row>
       </Container>
     </>

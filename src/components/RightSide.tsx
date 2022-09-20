@@ -8,7 +8,8 @@ import Button from 'react-bootstrap/Button';
 
 type Props = {
     etiquetas:EtiquetaModal[],
-    setEtiquetas:Function
+    setEtiquetas:Function,
+    maxEtiquetas:number
 }
 
 export function RightSide(props:Props){
@@ -32,6 +33,7 @@ export function RightSide(props:Props){
                 <Button variant="primary" onClick={handlePrint}>
                         Imprimir
                 </Button>
+                <p className="text-muted" style={{textAlign:"right"}}><b>Total de Etiquetas:</b> {props.etiquetas.length} de {props.maxEtiquetas}</p>
             </Row>
             <Row ref={componentRef} style={{paddingLeft:"20px" }}>
             {etiquetas.map(etiqueta=>(

@@ -7,10 +7,12 @@ import { EtiquetaModal } from '../Models/EtiquetaModal';
 
 type Props = {
     etiquetas:EtiquetaModal[]
-    setEtiquetas:Function
+    setEtiquetas:Function,
+    maxEtiquetas:number
 }
 
 export function LeftSide(props:Props){
+    
     const [patrimonio, setPatrimonio] = useState("");
     const [responsavel, setResponsavel] = useState("");
     const [usuario, setUsuario] = useState("");
@@ -46,24 +48,28 @@ export function LeftSide(props:Props){
         etiqueta.descricao = descricao
 
         if(validate(etiqueta)){
+            if(props.etiquetas.length < props.maxEtiquetas){
+                const newEtiquetas = props.etiquetas.filter(e => {
+                    return e.patrimonio == etiqueta.patrimonio;
+                })
+                
+                if(newEtiquetas.length > 0){
+                    console.log("Não adicionar");
+                    alert('Patrimônio já está na lista!');
+                }
+                else{
+                    props.setEtiquetas([...props.etiquetas, etiqueta]);
 
-            const newEtiquetas = props.etiquetas.filter(e => {
-                return e.patrimonio == etiqueta.patrimonio;
-            })
-            
-            if(newEtiquetas.length > 0){
-                console.log("Não adicionar");
-                alert('Patrimônio já está na lista!');
+                    //Limpando Form
+                    setPatrimonio("");
+                    //setResponsavel("");
+                    //setUsuario("");
+                    //setSala("");
+                    setDescricao("");
+                }
             }
             else{
-                props.setEtiquetas([...props.etiquetas, etiqueta]);
-
-                //Limpando Form
-                setPatrimonio("");
-                //setResponsavel("");
-                //setUsuario("");
-                //setSala("");
-                setDescricao("");
+                alert('Número máximo de etiquetas alcançado.');
             }
         }
         else{
