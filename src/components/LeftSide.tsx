@@ -17,9 +17,27 @@ export function LeftSide(props:Props){
     const [sala, setSala] = useState("");
     const [descricao, setDescricao] = useState("");
 
+    function validate(e:EtiquetaModal){
+        if (e.patrimonio.length < 1)
+            return false;
+        if (e.responsavel.length < 4)
+            return false;
+        if (e.usuario.length < 4)
+            return false;
+        if (e.sala.length < 3)
+            return false;
+        if (e.descricao.length < 4)
+            return false;
+        
+        return true;
+
+    }
 
     function handleCreateNewEtiqueta(event:FormEvent){
         event.preventDefault();
+
+        
+
         let etiqueta:EtiquetaModal = {} as EtiquetaModal;
         etiqueta.patrimonio = patrimonio;
         etiqueta.responsavel = responsavel;
@@ -27,14 +45,30 @@ export function LeftSide(props:Props){
         etiqueta.sala = sala;
         etiqueta.descricao = descricao
 
-        props.setEtiquetas([...props.etiquetas, etiqueta]);
+        if(validate(etiqueta)){
 
-        //Limpando Form
-        /*setPatrimonio("");
-        setResponsavel("");
-        setUsuario("");
-        setSala("");
-        setDescricao("");*/
+            const newEtiquetas = props.etiquetas.filter(e => {
+                return e.patrimonio == etiqueta.patrimonio;
+            })
+            
+            if(newEtiquetas.length > 0){
+                console.log("Não adicionar");
+                alert('Patrimônio já está na lista!');
+            }
+            else{
+                props.setEtiquetas([...props.etiquetas, etiqueta]);
+
+                //Limpando Form
+                setPatrimonio("");
+                //setResponsavel("");
+                //setUsuario("");
+                //setSala("");
+                setDescricao("");
+            }
+        }
+        else{
+            alert('Preencha todos os campos!');
+        }
     }
 
     return(

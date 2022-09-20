@@ -6,24 +6,18 @@ import { LeftSide } from "./components/LeftSide";
 import { RightSide } from "./components/RightSide";
 import { EtiquetaModal } from "./Models/EtiquetaModal";
 
+
+
 export function App() { 
 
-  const [etiquetas, setEtiquetas] = useState<EtiquetaModal[]>([
-    {
-        patrimonio:"12861555",
-        responsavel:"Onésimo Alexandre",
-        usuario:"Mguel Almeida",
-        sala:"Protocolo",
-        descricao:"Mesa Reta Bege"
-    }
-])
+  const [etiquetas, setEtiquetas] = useState<EtiquetaModal[]>([]);
   return (
     <>
       <Header/>
       <Container>
         <Row>
           <LeftSide etiquetas = {etiquetas} setEtiquetas = {setEtiquetas}/>
-          <RightSide etiquetas={etiquetas}/>
+          <RightSide etiquetas={etiquetas} setEtiquetas = {setEtiquetas}/>
         </Row>
       </Container>
     </>

@@ -1,9 +1,12 @@
 import Card from 'react-bootstrap/Card';
 import { useBarcode } from 'react-barcodes';
 import { EtiquetaModal } from '../Models/EtiquetaModal'; 
+import Button from 'react-bootstrap/Button';
 
 type Props = {
-    etiqueta:EtiquetaModal
+    etiqueta:EtiquetaModal,
+    etiquetas: EtiquetaModal[],
+    setEtiquetas:Function
 }
 
 export function Etiqueta(props:Props){
@@ -19,12 +22,22 @@ export function Etiqueta(props:Props){
           margin:5,
           fontOptions:"bold"
         }
-      });
+    });
+
+    function selfDelete(){
+        const newEtiquetas = props.etiquetas.filter(e => {
+            return e.patrimonio != etiqueta.patrimonio;
+        })
+
+        props.setEtiquetas(newEtiquetas);
+    }
+    
 
     return(
 
         <Card style={{ width: '13rem', marginTop:"5px", marginLeft:"5px", padding:"5px", paddingBottom:"0px"}}>
         <Card.Body style={{padding:"0px", paddingLeft:"5px" }}>
+            <button type="button" className="btn-close" aria-label="Close" onClick={selfDelete}/>
             <Card.Title style={{fontSize:"18px", textAlign:"center", textTransform: "uppercase", marginBottom:"0px"}}>Inventário 2022</Card.Title>
             <Card.Subtitle className="mb-2 text-muted" style={{textAlign:"right", textTransform: "uppercase"}}>{etiqueta.sala}</Card.Subtitle>
             <Card.Text style={{marginBottom:"0px", fontSize:"12px", lineHeight: "13px", textTransform: "uppercase"}}>

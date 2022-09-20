@@ -7,16 +7,23 @@ import { Etiqueta } from './Etiqueta';
 import Button from 'react-bootstrap/Button';
 
 type Props = {
-    etiquetas:EtiquetaModal[]
+    etiquetas:EtiquetaModal[],
+    setEtiquetas:Function
 }
 
 export function RightSide(props:Props){
 
     const etiquetas:EtiquetaModal[] = props.etiquetas
     const componentRef:any = useRef();
+    const pageStyle =`
+        .btn-close{
+            display:none;
+        }
+    `;
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
+        pageStyle: pageStyle 
     });
     
     return(
@@ -28,7 +35,7 @@ export function RightSide(props:Props){
             </Row>
             <Row ref={componentRef} style={{paddingLeft:"20px" }}>
             {etiquetas.map(etiqueta=>(
-                <Etiqueta etiqueta={etiqueta}/>
+                <Etiqueta etiqueta={etiqueta} etiquetas={props.etiquetas} setEtiquetas={props.setEtiquetas}/>
             ))
             }
             </Row>
